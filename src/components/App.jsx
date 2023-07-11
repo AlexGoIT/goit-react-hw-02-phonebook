@@ -43,11 +43,7 @@ export default class App extends Component {
 
   // Add filter
   handleFilter = ({ filter }) => {
-    // const { value } = e.target;
-
-    console.log(filter);
-
-    this.setState({ filter: filter });
+    this.setState({ filter });
   };
 
   render() {
