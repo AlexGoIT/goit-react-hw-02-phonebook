@@ -21,9 +21,10 @@ export default class ContactForm extends Component {
     e.preventDefault();
 
     const { name, number } = this.state;
+    const { onAddContact } = this.props;
     const id = nanoid(5);
 
-    this.props.onAddContact({ id, name, number });
+    onAddContact({ id, name, number });
 
     this.setState({
       name: '',
@@ -39,6 +40,7 @@ export default class ContactForm extends Component {
 
   render() {
     const { name, number } = this.state;
+
     return (
       <Form onSubmit={this.handleSubmit}>
         <label>

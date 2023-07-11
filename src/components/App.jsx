@@ -42,9 +42,12 @@ export default class App extends Component {
   };
 
   // Add filter
-  handleFilter = e => {
-    const { value } = e.target;
-    this.setState({ filter: value });
+  handleFilter = ({ filter }) => {
+    // const { value } = e.target;
+
+    console.log(filter);
+
+    this.setState({ filter: filter });
   };
 
   render() {
