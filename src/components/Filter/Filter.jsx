@@ -49,12 +49,7 @@ export default class Filter extends Component {
     return (
       <FilterLabel>
         Find contacts by name
-        <FilterInput
-          type="text"
-          placeholder="Input name..."
-          onChange={this.handleChange}
-          value={filter}
-        />
+        <FilterInput type="text" onChange={this.handleChange} value={filter} />
       </FilterLabel>
     );
   }
