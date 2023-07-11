@@ -1,14 +1,15 @@
-import { List } from "./ContactList.styled";
-import ContactItem from "./ContactItem/ContactItem";
+import PropTypes from 'prop-types';
+import { List } from './ContactList.styled';
+import ContactItem from './ContactItem/ContactItem';
 
 const ContactList = ({ contacts, filter, onDeleteContact }) => {
   return (
     <List>
       {contacts
-        .filter((contact) =>
+        .filter(contact =>
           contact.name.toLowerCase().includes(filter.toLowerCase())
         )
-        .map((contact) => {
+        .map(contact => {
           const { id } = contact;
           return (
             <ContactItem
@@ -23,3 +24,9 @@ const ContactList = ({ contacts, filter, onDeleteContact }) => {
 };
 
 export default ContactList;
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(),
+  filter: PropTypes.string,
+  onDeleteContact: PropTypes.func,
+};

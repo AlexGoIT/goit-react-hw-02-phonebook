@@ -1,4 +1,5 @@
-import { Item } from "./ContactItem.styled";
+import PropTypes from 'prop-types';
+import { Item } from './ContactItem.styled';
 
 const ContactItem = ({ contact, onDeleteContact }) => {
   const { id, name, number } = contact;
@@ -12,3 +13,12 @@ const ContactItem = ({ contact, onDeleteContact }) => {
 };
 
 export default ContactItem;
+
+ContactItem.propTypes = {
+  contact: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    number: PropTypes.string,
+  }),
+  onDeleteContact: PropTypes.func,
+};
