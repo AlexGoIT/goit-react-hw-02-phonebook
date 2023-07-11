@@ -24,8 +24,9 @@ export const Form = styled.form`
     border: none;
     font-size: 18px;
     font-weight: 700;
-    background-color: #4caf50;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
     cursor: pointer;
+    transition: background-color 0.25s ease;
 
     &:hover,
     &:focus {
