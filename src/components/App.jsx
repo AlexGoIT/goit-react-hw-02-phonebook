@@ -17,6 +17,10 @@ export default class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    document.title = 'HW-2 Phonebook';
+  }
+
   // Add contact
   handleAddContact = contact => {
     const { contacts } = this.state;
