@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import './App.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-import { ContactForm } from './ContactForm';
-import { ContactList } from './ContactList';
-import { Filter } from './Filter';
+import ContactForm from './ContactForm';
+import ContactList from './ContactList';
+import Filter from './Filter';
 
 export default class App extends Component {
   state = {
@@ -23,27 +24,29 @@ export default class App extends Component {
 
     // Verify contact
     if (contacts.find(contact => contact.name === name)) {
-      alert(`${name} is already in contacts`);
+      // alert() було використано згідно ДЗ, крок 5.
+      // alert(`${name} is already in contacts`);
+      Notify.failure(`${name} is already in contacts`);
       return;
     }
 
-    this.setState({
-      contacts: [...contacts, contact],
+    this.setState(prevState => {
+      return { contacts: [...prevState.contacts, contact] };
     });
   };
 
   // Delete contact
   handleDeleteContact = id => {
-    const { contacts } = this.state;
-
-    this.setState({
-      contacts: contacts.filter(contact => contact.id !== id),
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(contact => contact.id !== id),
+      };
     });
   };
 
   // Add filter
-  handleFilter = ({ filter }) => {
-    this.setState({ filter });
+  handleFilter = e => {
+    this.setState({ filter: e.target.value });
   };
 
   render() {
@@ -54,7 +57,7 @@ export default class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.handleAddContact} />
         <h2>Contacts</h2>
-        <Filter onFilter={this.handleFilter} />
+        <Filter onFilter={this.handleFilter} filter={this.state.filter} />
         <ContactList
           contacts={contacts}
           filter={filter}
